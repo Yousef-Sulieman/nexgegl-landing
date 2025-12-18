@@ -26,9 +26,9 @@ html {
   /* ================= Brand Navy ================= */
 
   --color-navy-950: #1a1a2e; /* Darkest background (Hero / Footer) */
-  --color-navy-900: #23234a; /* Section background */
+  --color-navy-900: #2c2c54; /* Section background */
   --color-navy-800: #2c2c54; /* Brand Navy (Primary) */
-  --color-navy-700: #383860; /* Borders / Cards / Hover */
+  --color-navy-700: #2c2c54; /* Borders / Cards / Hover */
 
   --color-gold-300: #e6dec5;
   --color-gold-400: #d5c7a3;

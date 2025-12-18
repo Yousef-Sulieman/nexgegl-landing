@@ -1,0 +1,290 @@
+@import "tailwindcss";
+
+html {
+  scroll-behavior: smooth;
+}
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #d4af37 #0f1324;
+}
+.font-en {
+  font-family: var(--font-en), system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Arial, sans-serif;
+}
+
+.font-ar {
+  font-family: var(--font-ar), "DIN Next LT Arabic", "IBM Plex Sans Arabic",
+    Tahoma, Arial, system-ui, sans-serif;
+}
+
+/* =========================================
+   THEME VARIABLES
+========================================= */
+@theme {
+  --font-sans: "Montserrat", sans-serif;
+  /* ================= Brand Navy ================= */
+
+  --color-navy-950: #1a1a2e; /* Darkest background (Hero / Footer) */
+  --color-navy-900: #23234a; /* Section background */
+  --color-navy-800: #2c2c54; /* Brand Navy (Primary) */
+  --color-navy-700: #383860; /* Borders / Cards / Hover */
+
+  --color-gold-300: #e6dec5;
+  --color-gold-400: #d5c7a3;
+  --color-gold-500: #b59c5c;
+}
+
+/* =========================================
+   BASE
+========================================= */
+body {
+  background-color: var(--color-navy-900);
+  color: white;
+  overflow-x: hidden;
+}
+/* ===== Custom Scrollbar (Global) ===== */
+
+/* Chrome, Edge, Safari */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0f1324; /* Navy dark */
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #d4af37, #b89b2e); /* Gold gradient */
+  border-radius: 8px;
+  border: 5px solid #0f1324;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #f1d36b, #c9a53a);
+}
+
+/* =========================================
+   GOLD TEXT GRADIENT
+========================================= */
+.text-gradient-gold {
+  background: linear-gradient(
+    135deg,
+    var(--color-gold-300),
+    var(--color-gold-500)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* =========================================
+   🚀 ALL ANIMATIONS (TAILWIND v4 VALID)
+========================================= */
+
+@layer utilities {
+  /* fade in up */
+  @keyframes fade-up {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .animate-fade-in-up {
+    animation: fade-up 1s ease-out forwards;
+  }
+
+  /* float */
+  @keyframes float-hero {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-12px);
+    }
+  }
+  .animate-float {
+    animation: float-hero 5s ease-in-out infinite;
+  }
+
+  /* bounce slow */
+  @keyframes bounce-slow {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-6px);
+    }
+  }
+  .animate-bounce-slow {
+    animation: bounce-slow 3s infinite;
+  }
+
+  /* scan beam */
+  @keyframes scan-beam {
+    0% {
+      left: -100%;
+    }
+    50% {
+      left: 200%;
+    }
+    100% {
+      left: 200%;
+    }
+  }
+  .animate-scan-beam {
+    animation: scan-beam 8s ease-in-out infinite;
+  }
+
+  /* scan (inside images) */
+  @keyframes scan {
+    0% {
+      top: 0%;
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 1;
+    }
+    100% {
+      top: 100%;
+      opacity: 0;
+    }
+  }
+  .animate-scan {
+    animation: scan 4s linear infinite;
+  }
+
+  /* data streams */
+  @keyframes data-stream {
+    0% {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+    20% {
+      opacity: 1;
+    }
+    80% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+  }
+  .animate-data-stream {
+    animation-name: data-stream;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  }
+
+  /* delays */
+  .delay-100 {
+    animation-delay: 0.1s;
+  }
+  .delay-200 {
+    animation-delay: 0.2s;
+  }
+  .delay-300 {
+    animation-delay: 0.3s;
+  }
+  .delay-500 {
+    animation-delay: 0.5s;
+  }
+  .delay-700 {
+    animation-delay: 0.7s;
+  }
+}
+@keyframes orbit-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes orbit-spin-reverse {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+.orbit-outer {
+  animation: orbit-spin 60s linear infinite;
+}
+
+.orbit-mid {
+  animation: orbit-spin 30s linear infinite;
+}
+
+.orbit-inner {
+  animation: orbit-spin-reverse 20s linear infinite;
+}
+@keyframes spin-slow {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@utility animate-spin-slow {
+  animation: spin-slow 20s linear infinite;
+}
+@utility animate-spin-slower {
+  animation: spin-slow 30s linear infinite;
+}
+@utility animate-spin-reverse {
+  animation: spin-slow 20s linear infinite reverse;
+}
+/* ========== ROTATION FIXES ========== */
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@utility animate-spin-slow {
+  animation: spin-slow 60s linear infinite;
+}
+
+@utility animate-spin-medium {
+  animation: spin-slow 30s linear infinite;
+}
+
+@utility animate-spin-reverse {
+  animation: spin-slow 20s linear infinite reverse;
+}
+.glass-panel {
+  background: rgba(44, 44, 84, 0.3);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(213, 199, 163, 0.1);
+}
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 20s linear infinite;
+}
